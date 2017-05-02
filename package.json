@@ -1,0 +1,35 @@
+{
+  "name": "futurepull-tasks.heroku",
+  "version": "0.0.0",
+  "description": "futurepull-tasks.heroku",
+  "main": "app.js",
+  "engines": {
+    "node": "7"
+  },
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LightSpeedC/futurepull-tasks.heroku.git"
+  },
+  "keywords": [
+    "heroku",
+    "futurepull",
+    "future"
+  ],
+  "author": "LightSpeedC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LightSpeedC/futurepull-tasks.heroku/issues"
+  },
+  "homepage": "https://github.com/LightSpeedC/futurepull-tasks.heroku#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "regenerator-runtime": "^0.10.5",
+    "serve-index": "^1.8.0",
+    "socket.io": "^1.7.3"
+  }
+}
