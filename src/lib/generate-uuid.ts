@@ -1,14 +1,10 @@
 'use strict';
 
-module.exports = generateUUID;
-generateUUID.generateUUID = generateUUID;
-generateUUID.generateUUIDs = generateUUIDs;
-
 let lastTime = 0;
 let lastNum = 0;
 const Z7 = parseInt('zzzzzzz',36);
 
-function generateUUID() {
+function generateUUID(): string {
 	let time = Date.now();
 	let num = lastNum;
 	if (time > lastTime) num = random7();
@@ -22,7 +18,7 @@ function generateUUID() {
 	return time9(time) + num7(num);
 }
 
-function generateUUIDs(n) {
+function generateUUIDs(n): string[] {
 	if (n <= 0) throw new Error('number must be positive!');
 
 	let time = Date.now();
@@ -47,22 +43,27 @@ function generateUUIDs(n) {
 	return result;
 }
 
-function zpad(s, m) {
+function zpad(s: string, m: number): string {
 	return ('00000000' + s).substr(-m);
 }
 
-function zpad36(n, m) {
+function zpad36(n: number, m: number): string {
 	return zpad(n.toString(36), m);
 }
 
-function time9(time) {
+function time9(time: number): string {
 	return zpad36(time, 9);
 }
 
-function num7(num) {
+function num7(num: number): string {
 	return zpad36(num, 7);
 }
 
-function random7() {
+function random7(): number {
 	return Math.floor(Math.random() * Z7);
 }
+
+generateUUID['generateUUID'] = generateUUID;
+generateUUID['generateUUIDs'] = generateUUIDs;
+export = generateUUID;
+//module.exports = generateUUID;
