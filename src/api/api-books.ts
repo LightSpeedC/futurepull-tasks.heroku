@@ -3,7 +3,7 @@
 module.exports = function (context) {
 	const router = require('express').Router();
 
-	const books = context.books = {list: []};
+	const books = context.books = {list: [], nextId: 0};
 	const reduceMaxId = (a, b) => Math.max(a, b.id);
 
 	for (let id = 0; id < 1e3; ++id)
