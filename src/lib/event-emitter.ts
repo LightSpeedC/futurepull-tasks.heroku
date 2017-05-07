@@ -60,23 +60,23 @@ const EventEmitter = (function () {
 	}
 
 	// add
-	function add(listeners: Function[], event: string, listener: Function) {
+	function add(listeners: any/*Function[]*/, event: string, listener: Function) {
 		(listeners[event] || (listeners[event] = [])).push(listener);
 	}
 
 	// remove
-	function remove(listeners?: Function[], event?: string, listener?: Function) {
+	function remove(listeners?: any/*Function[]*/, event?: string, listener?: Function) {
 		if (!listeners || !event || !listeners[event]) return;
 		if (!listener) return delete listeners[event];
 
-		listeners[event] = listeners[event].filter(fn => fn !== listener);
+		listeners[event] = listeners[event].filter((fn: Function) => fn !== listener);
 		if (listeners[event].length === 0) delete listeners[event]
 	}
 
 	// fire
-	function fire(listeners: Function[], event: string, args: any[]) {
+	function fire(listeners: any/*Function[]*/, event: string, args: any[]) {
 		if (listeners && listeners[event])
-			listeners[event].forEach(listener => listener.apply(null, args));
+			listeners[event].forEach((listener: Function) => listener.apply(null, args));
 	}
 
 	alias(EventEmitter, 'clear', 'reset');

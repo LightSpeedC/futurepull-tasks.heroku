@@ -3,30 +3,38 @@
 module.exports = function (context) {
 	const router = require('express').Router();
 
-	const books = context.books = {list: [], nextId: 0};
+	type Book = {
+		id: number;
+		name: string;
+	};
+	const list: Book[] = [];
+
+	const books = context.books = { list, nextId: 0 };
 	const reduceMaxId = (a, b) => Math.max(a, b.id);
 
 	for (let id = 0; id < 1e3; ++id)
-		books.list.push({id, name: 'books' + id});
+		books.list.push({ id, name: 'books' + id });
 
 	books.nextId = books.list.reduce(reduceMaxId, 0) + 1;
 
 	const SIZE = 10;
-	const NOT_FOUND = {code: 'NOT_FOUND',
-			message: 'not found'};
+	const NOT_FOUND = {
+		code: 'NOT_FOUND',
+		message: 'not found'
+	};
 
 	// GET /?offset=0&size=10
 	router.get('/', (req, res) => {
 		const offset = Number(req.query.offset || 0);
 		const size = Number(req.query.size || SIZE);
-		res.json({result: {list: books.list.slice(offset, offset + size), offset, size, length: books.list.length}});
+		res.json({ result: { list: books.list.slice(offset, offset + size), offset, size, length: books.list.length } });
 	});
 
 	// GET /:id
 	router.get('/:id', (req, res) => {
 		const pos = getIndex(Number(req.params.id));
-		if (pos < 0) return res.json({error: NOT_FOUND});
-		res.json({result: books.list[pos]});
+		if (pos < 0) return res.json({ error: NOT_FOUND });
+		res.json({ result: books.list[pos] });
 	});
 
 	// POST /
@@ -34,21 +42,21 @@ module.exports = function (context) {
 		const elem = req.body;
 		elem.id = books.nextId++;
 		books.list.push(elem);
-		res.json({result: elem});
+		res.json({ result: elem });
 	});
 
 	// PUT /:id
 	router.put('/:id', (req, res) => {
 		const pos = getIndex(req.params.id);
-		if (pos < 0) return res.json({error: NOT_FOUND});
-		res.json({result: books.list.splice(pos, 1, req.body)});
+		if (pos < 0) return res.json({ error: NOT_FOUND });
+		res.json({ result: books.list.splice(pos, 1, req.body) });
 	});
 
 	// DELETE /:id
 	router.delete('/:id', (req, res) => {
 		const pos = getIndex(req.params.id);
-		if (pos < 0) return res.json({error: NOT_FOUND});
-		res.json({result: books.list.splice(pos, 1)});
+		if (pos < 0) return res.json({ error: NOT_FOUND });
+		res.json({ result: books.list.splice(pos, 1) });
 	});
 
 	// getIndex

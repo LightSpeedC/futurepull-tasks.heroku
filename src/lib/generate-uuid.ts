@@ -2,7 +2,7 @@
 
 let lastTime = 0;
 let lastNum = 0;
-const Z7 = parseInt('zzzzzzz',36);
+const Z7 = parseInt('zzzzzzz', 36);
 
 function generateUUID(): string {
 	let time = Date.now();
@@ -11,14 +11,14 @@ function generateUUID(): string {
 	else time = lastTime;
 
 	++num;
-	if (num >= Z7) ++time, num = 0;
+	if (num >= Z7) time++ , num = 0;
 
 	lastTime = time;
 	lastNum = num;
 	return time9(time) + num7(num);
 }
 
-function generateUUIDs(n): string[] {
+function generateUUIDs(n: number): string[] {
 	if (n <= 0) throw new Error('number must be positive!');
 
 	let time = Date.now();
@@ -63,7 +63,8 @@ function random7(): number {
 	return Math.floor(Math.random() * Z7);
 }
 
-generateUUID['generateUUID'] = generateUUID;
-generateUUID['generateUUIDs'] = generateUUIDs;
-export = generateUUID;
+// generateUUID['generateUUID'] = generateUUID;
+// generateUUID['generateUUIDs'] = generateUUIDs;
+export default generateUUID;
+export { generateUUID, generateUUIDs };
 //module.exports = generateUUID;
