@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 const socket = io();
-const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+const sleep = (msec: number) => new Promise(resolve => setTimeout(resolve, msec));
 const CHAT_MESSAGE = 'chat-message';
 
 type Message = string;
@@ -17,7 +17,7 @@ interface Form1State {
 class Form1 extends React.Component<Form1Props, Form1State> {
 	state: Form1State;
 
-	constructor(props, context) {
+	constructor(props: Form1Props, context: any) {
 		super(props, context);
 		this.state = { value: '', messages: [] };
 		this.onSendMessage = this.onSendMessage.bind(this);
@@ -44,12 +44,12 @@ class Form1 extends React.Component<Form1Props, Form1State> {
 		return false;
 	}
 
-	onChangeInput(ev) {
+	onChangeInput(ev: any) {
 		const value = ev.target.value;
 		this.setState(s => (s.value = value, s));
 	}
 
-	onKeyPressInput(ev) {
+	onKeyPressInput(ev: any) {
 		const code = ev.keyCode || ev.charCode || ev.which;
 		if (code === 13) this.onSendMessage();
 	}
@@ -57,7 +57,7 @@ class Form1 extends React.Component<Form1Props, Form1State> {
 	render() {
 		return <div>
 			<ul className="messages-class">
-				{this.state.messages.map(x => <li key={x} > {x} </li>)}
+				{this.state.messages.map(x => <li key={x}>{x}</li>)}
 			</ul>
 			<div className="form-class">
 				<input type="text" autoComplete="off" autoFocus

@@ -16,8 +16,10 @@ const api = require('./api');
 
 const server = http.Server(app);
 const io = require('socket.io')(server);
-const context = { io };
+const context = { io, tasks: [] };
 const CHAT_MESSAGE = 'chat-message';
+const SEND_ALL_TASKS = 'send-all-tasks';
+const ALL_TASKS = 'all-tasks';
 
 io.on('connection', function (socket) {
 	console.log('a user connected');
@@ -29,6 +31,11 @@ io.on('connection', function (socket) {
 	socket.on(CHAT_MESSAGE, function (msg) {
 		console.log('message: ' + msg);
 		io.emit(CHAT_MESSAGE, msg);
+	});
+
+	socket.on(SEND_ALL_TASKS, function () {
+		console.log('send-all-tasks:');
+		socket.emit(ALL_TASKS, context.tasks);
 	});
 
 });
