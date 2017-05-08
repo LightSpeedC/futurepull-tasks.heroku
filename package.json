@@ -13,26 +13,25 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@types/node": "^7.0.18",
     "aa": "^0.1.40",
     "body-parser": "^1.17.1",
+    "copy-webpack-plugin": "^4.0.1",
     "express": "^4.15.2",
     "promise-thunk": "^0.1.17",
-    "regenerator-runtime": "^0.10.5",
-    "serve-index": "^1.8.0",
-    "socket.io": "^1.7.3"
-  },
-  "devDependencies": {
-    "@types/node": "^7.0.16",
-    "copy-webpack-plugin": "^4.0.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "regenerator-runtime": "^0.10.5",
+    "serve-index": "^1.8.0",
+    "socket.io": "^1.7.4",
     "ts-loader": "^2.0.3",
     "typescript": "^2.3.2",
     "typings": "^2.1.1",
-    "webpack": "^2.4.1",
+    "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5",
-    "webpack-node-externals": "^1.5.4"
+    "webpack-node-externals": "^1.6.0"
   },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LightSpeedC/futurepull-tasks.heroku.git"
