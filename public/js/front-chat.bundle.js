@@ -93,9 +93,9 @@ module.exports = ReactDOM;
 /* 2 */
 /* unknown exports provided */
 /* all exports used */
-/*!***********************!*\
-  !*** ./src/front.tsx ***!
-  \***********************/
+/*!****************************!*\
+  !*** ./src/front-chat.tsx ***!
+  \****************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -160,4 +160,4 @@ if (content)
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=front.bundle.js.map
+//# sourceMappingURL=front-chat.bundle.js.map

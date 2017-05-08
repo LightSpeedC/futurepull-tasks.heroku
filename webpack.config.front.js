@@ -19,7 +19,8 @@ module.exports = {
 	},
 
 	entry: {
-		front: './src/front',
+		'front-chat': './src/front-chat',
+		'front-tasks': './src/front-tasks',
 	},
 
 	output: {
