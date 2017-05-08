@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node server/server.bundle.js",
-    "build": "webpack --colors --config ./webpack.config.front.js & webpack --colors --config ./webpack.config.server.js",
+    "postinstall": "webpack",
+    "build": "webpack --colors --config ./webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
